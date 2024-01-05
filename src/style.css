@@ -1,0 +1,13 @@
+body{
+    background-color: #EDEDED !important;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Three columns */
+    column-gap: 2px; 
+    row-gap: 20px;
+   
+     }
+
+   
