@@ -23,7 +23,7 @@ function ProductDetail() {
       <p>{product.description}</p>
       <p>Category: {product.category}</p>
       <p>Price: {product.price}</p>
-      {/* Add more details as needed */}
+  
     </div>
   );
 }

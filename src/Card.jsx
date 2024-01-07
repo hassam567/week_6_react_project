@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 function Card({ productData }) {
   const { id, title, price, description, image, category } = productData;
-  const maxLength = 150;
+  const maxLength = 50;
 
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -29,33 +28,27 @@ function Card({ productData }) {
   };
 
   return (
-    <>
-      <div className="card" style={{ boxShadow: "10px", width: "300px", height: "830px", display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: "#F7F7F7" }}>
-        <Link to={`/product/${id}`} style={{ textDecoration: "none" }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "30%", marginTop:"30px" }}>
-            <img className="card-img" src={image} alt="not found" style={{ width: "70%", height: "100%" }} />
-          </div>
-
-          <div className="d-flex flex-column align-items-center" style={{ textAlign: "justify", margin: "0 20px" }}>
-            <br />
-            <br />
-            <b style={{ fontWeight: "bold", fontSize: "20px", color: "#FF0000" }}>Title: </b>
-            <p style={{ fontSize: "15px", color: "#000000" }}>{title}</p>
-
-            <b style={{ fontWeight: "bold", fontSize: "20px", color: "#FF0000" }}>Description: </b>
-            <p style={{ fontSize: "15px", cursor: "pointer", color: "#000000" }} onClick={toggleExpansion}>
-              {renderDescription()}
-            </p>
-
-            <b style={{ fontWeight: "bold", fontSize: "20px", color: "#FF0000" }}>Category: </b>
-            <p style={{ fontSize: "15px", color: "#000000" }}>{category}</p>
-
-            <b style={{ fontWeight: "bold", fontSize: "20px", color: "#FF0000" }}>Price: </b>
-            <p style={{ fontSize: "15px", color: "#000000" }}>{price}</p>
-          </div>
-        </Link>
+    <div className="card " style={{ height: isExpanded ? "auto" : "500px", width: "300px", backgroundColor: "#F7F7F7", marginLeft: "0px", marginRight: "0spx" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%", height: "30%", marginTop: "30px", textDecoration: "none" }} onClick={() => { if (!isExpanded) window.location.href = `/product/${id}`; }}>
+        <img className="card-img" src={image} alt="not found" style={{ width: "40%", height: "100%", mixBlendMode: "multiply" }} />
       </div>
-    </>
+
+      <br />
+      <br />
+
+      <div className="d-flex flex-column justify-content-center align-items-center" style={{ marginLeft: "20px", marginRight: "20px" }}>
+        <div style={{ textDecoration: "none" }} onClick={() => { if (!isExpanded) window.location.href = `/product/${id}`; }}>
+          <b><p style={{ fontSize: "15px", color: "#000000" }}>{title}</p></b>
+        </div>
+        <p style={{ fontSize: "15px", cursor: "pointer", color: "#000000", textAlign: "justify" }} onClick={toggleExpansion}>
+          {renderDescription()}
+        </p>
+        <div style={{ textDecoration: "none" }} onClick={() => { if (!isExpanded) window.location.href = `/product/${id}`; }}>
+          <p style={{ fontSize: "15px", color: "#000000" }}>{category}</p>
+          <p style={{ fontSize: "15px", color: "#000000" }}>{price}</p>
+        </div>
+      </div>
+    </div>
   );
 }
 
